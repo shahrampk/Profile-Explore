@@ -6,6 +6,12 @@ module.exports = {
       fontFamily: {
         "fira-code": '"Fira Code",monospace',
       },
+      height: {
+        main: "150vh",
+      },
+      minWidth: {
+        aside: "350px",
+      },
     },
   },
   plugins: [],
