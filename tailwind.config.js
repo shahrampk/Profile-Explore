@@ -9,6 +9,9 @@ module.exports = {
       minWidth: {
         aside: "350px",
       },
+      maxHeight: {
+        main: "150vh",
+      },
     },
   },
   plugins: [],
