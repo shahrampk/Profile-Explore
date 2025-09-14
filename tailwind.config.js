@@ -12,6 +12,12 @@ module.exports = {
       maxHeight: {
         main: "160vh",
       },
+      height: {
+        searchBar: "60px",
+      },
+      width: {
+        searchBar: "60px",
+      },
     },
   },
   plugins: [],

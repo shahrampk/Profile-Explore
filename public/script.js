@@ -9,6 +9,8 @@ const repoSection = document.querySelector(".Repos-section");
 const loader = document.querySelector("#loader");
 const beforeBtn = document.querySelector(".before");
 const afterBtn = document.querySelector(".next");
+const searchBarRepo = document.querySelector("#search-bar-repo");
+const searchIcon = document.querySelector("#search-bar-repo");
 
 let currentPage = 1;
 let allrepos = [];
@@ -71,7 +73,7 @@ const createRepoCards = function (reposArr) {
        <div
            class="repo p-4 md:p-6 rounded-xl border border-gray-700 bg-gradient-to-br from-gray-900/60 to-gray-800/40 
                 hover:from-gray-800/80 hover:to-gray-700/20 transition-all duration-300 
-                shadow-md hover:shadow-xl hover:-translate-y-1 flex flex-col gap-4 cursor-pointer relative overflow-hidden">
+                shadow-md hover:shadow-xl hover:-translate-y-1 flex flex-col gap-4 relative overflow-hidden">
            <!-- Repo Name -->
            <a href="${repo.html_url}" target="_blank"
                class="repo-name text-xl md:text-2xl font-bold text-indigo-400 hover:text-indigo-300 hover:underline relative z-10 w-fit">
@@ -90,7 +92,7 @@ const createRepoCards = function (reposArr) {
                    🍴 ${repo.forks}
                </span>
                <span class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-blue-500/20 text-blue-300 border border-blue-400/30">
-                   ⏳ ${timeAgo(repo.updated_at) ?? "Not defined"}
+                   ⏳ ${timeAgo(repo.pushed_at) ?? "Not defined"}
                </span>
            </div>
        </div>
@@ -251,6 +253,19 @@ const main = async function () {
 };
 
 // ---------------------- //
+// Search repo
+// ---------------------- //
+const searchRepo = function () {
+  const repoName = searchBarRepo.value.trim().toLowerCase();
+  console.log(repoName);
+  const repoObject = [
+    allrepos.find((repo) => repo.name.toLowerCase() === repoName),
+  ];
+  console.log(repoObject);
+  createRepoCards(repoObject);
+};
+
+// ---------------------- //
 // EVENT LISTENERS
 // ---------------------- //
 searchBtn.addEventListener("click", main);
@@ -264,3 +279,4 @@ beforeBtn.addEventListener("click", () => {
   currentPage--;
   renderRepos();
 });
+searchIcon.addEventListener("click", searchRepo);
