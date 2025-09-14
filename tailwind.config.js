@@ -10,7 +10,7 @@ module.exports = {
         aside: "350px",
       },
       maxHeight: {
-        main: "150vh",
+        main: "160vh",
       },
     },
   },

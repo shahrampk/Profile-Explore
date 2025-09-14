@@ -15,8 +15,7 @@
 </head>
 
 <body class="bg-gradient-to-r from-gray-950 text-white via-indigo-950 to-gray-950 font-fira-code">
-    <!-- Error Section -->
-    <p id="error" class="text-red-400 text-center mt-4 hidden"></p>
+
     <div class="flex flex-col gap-10 min-h-screen">
         <header id="header" class="bg-gray-900/30 border-b border-gray-700 px-6 py-7 md:py-4 relative">
             <nav class="flex items-center justify-between">
@@ -62,11 +61,20 @@
             </search>
         </header>
         <!-- MAIN APP -->
-        <main class="flex flex-col lg:grid grid-cols-8 p-3 md:p-6 gap-5 max-h-main">
+        <!-- Loader -->
+        <div id="loader" class="flex flex-col gap-4 items-center mt-52 h-full justify-center">
+            <div
+                class="w-20 h-20 border-4 border-transparent text-blue-400 text-4xl animate-spin flex items-center justify-center border-t-blue-400 rounded-full">
+                <div
+                    class="w-16 h-16 border-4 border-transparent text-red-400 text-2xl animate-spin flex items-center justify-center border-t-red-400 rounded-full">
+                </div>
+            </div>
+        </div>
+        <main class="flex flex-col lg:items-start lg:grid grid-cols-8 p-3 md:p-6 gap-5 lg:max-h-main">
             <!-- Profile Section -->
             <section id="profile"
-                class=" md:min-w-aside col-span-3 p-2 md:p-5 rounded-lg bg-gray-900/30 border h-full border-gray-700">
-                <div class=" flex flex-col sm:grid sm:grid-cols-6 gap-6 sm:items-center xl:p-3 rounded-2xl">
+                class="md:min-w-aside col-span-3 p-2 md:p-5 rounded-lg bg-gray-900/30 border h-full border-gray-700">
+                <div class="flex flex-col sm:grid sm:grid-cols-6 gap-6 sm:items-center xl:p-3 rounded-2xl">
                     <!-- Avatar -->
                     <div class="flex sm:col-span-2 justify-start">
                         <img src="../public/assets/photo (1).jpeg" alt="Avatar Image"
@@ -164,6 +172,241 @@
 
 
                         </div>
+                    </div>
+                    <div
+                        class="repo p-4 md:p-6 rounded-xl border border-gray-700 bg-gradient-to-br from-gray-900/60 to-gray-800/40 
+                             hover:from-gray-800/80 hover:to-gray-700/20 transition-all duration-300 
+                             shadow-md hover:shadow-xl hover:-translate-y-1 flex flex-col gap-4 cursor-pointer relative overflow-hidden">
+
+                        <!-- Repo Name -->
+                        <h3
+                            class="repo-name text-xl md:text-2xl font-bold text-indigo-400 hover:text-indigo-300 hover:underline relative z-10 w-fit">
+                            Profile Explorer
+                        </h3>
+
+                        <!-- Repo Info -->
+                        <div class="flex flex-wrap gap-3 mt-1 text-gray-300 relative z-10">
+
+
+                            <!-- Language -->
+                            <span class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs 
+                                bg-white/5 text-gray-300 border border-white/10
+                                transition-all duration-300 ease-in-out 
+                                hover:bg-white/10 hover:text-white hover:border-white/20">
+                                JavaScript
+                            </span>
+                            <!-- Stars -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-yellow-500/20 text-yellow-400 border border-yellow-400/30 transition-all duration-300 hover:bg-yellow-400/30">
+                                120 Stars
+                            </span>
+
+                            <!-- Forks -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-purple-500/20 text-purple-400 hover:text-purple-300 border border-purple-400/30 transition-all duration-300 hover:bg-purple-500/30">
+                                45 Forks
+                            </span>
+
+                            <!-- Last Updated -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-blue-500/20 text-blue-300 hover:text-blue-200 border border-blue-400/30 transition-all duration-300 hover:bg-blue-400/30">
+                                Updated 3 days ago
+                            </span>
+
+
+                        </div>
+                    </div>
+                    <div
+                        class="repo p-4 md:p-6 rounded-xl border border-gray-700 bg-gradient-to-br from-gray-900/60 to-gray-800/40 
+                             hover:from-gray-800/80 hover:to-gray-700/20 transition-all duration-300 
+                             shadow-md hover:shadow-xl hover:-translate-y-1 flex flex-col gap-4 cursor-pointer relative overflow-hidden">
+
+                        <!-- Repo Name -->
+                        <h3
+                            class="repo-name text-xl md:text-2xl font-bold text-indigo-400 hover:text-indigo-300 hover:underline relative z-10 w-fit">
+                            Profile Explorer
+                        </h3>
+
+                        <!-- Repo Info -->
+                        <div class="flex flex-wrap gap-3 mt-1 text-gray-300 relative z-10">
+
+
+                            <!-- Language -->
+                            <span class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs 
+                                bg-white/5 text-gray-300 border border-white/10
+                                transition-all duration-300 ease-in-out 
+                                hover:bg-white/10 hover:text-white hover:border-white/20">
+                                JavaScript
+                            </span>
+                            <!-- Stars -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-yellow-500/20 text-yellow-400 border border-yellow-400/30 transition-all duration-300 hover:bg-yellow-400/30">
+                                120 Stars
+                            </span>
+
+                            <!-- Forks -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-purple-500/20 text-purple-400 hover:text-purple-300 border border-purple-400/30 transition-all duration-300 hover:bg-purple-500/30">
+                                45 Forks
+                            </span>
+
+                            <!-- Last Updated -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-blue-500/20 text-blue-300 hover:text-blue-200 border border-blue-400/30 transition-all duration-300 hover:bg-blue-400/30">
+                                Updated 3 days ago
+                            </span>
+
+
+                        </div>
+                    </div>
+                    <div
+                        class="repo p-4 md:p-6 rounded-xl border border-gray-700 bg-gradient-to-br from-gray-900/60 to-gray-800/40 
+                             hover:from-gray-800/80 hover:to-gray-700/20 transition-all duration-300 
+                             shadow-md hover:shadow-xl hover:-translate-y-1 flex flex-col gap-4 cursor-pointer relative overflow-hidden">
+
+                        <!-- Repo Name -->
+                        <h3
+                            class="repo-name text-xl md:text-2xl font-bold text-indigo-400 hover:text-indigo-300 hover:underline relative z-10 w-fit">
+                            Profile Explorer
+                        </h3>
+
+                        <!-- Repo Info -->
+                        <div class="flex flex-wrap gap-3 mt-1 text-gray-300 relative z-10">
+
+
+                            <!-- Language -->
+                            <span class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs 
+                                bg-white/5 text-gray-300 border border-white/10
+                                transition-all duration-300 ease-in-out 
+                                hover:bg-white/10 hover:text-white hover:border-white/20">
+                                JavaScript
+                            </span>
+                            <!-- Stars -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-yellow-500/20 text-yellow-400 border border-yellow-400/30 transition-all duration-300 hover:bg-yellow-400/30">
+                                120 Stars
+                            </span>
+
+                            <!-- Forks -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-purple-500/20 text-purple-400 hover:text-purple-300 border border-purple-400/30 transition-all duration-300 hover:bg-purple-500/30">
+                                45 Forks
+                            </span>
+
+                            <!-- Last Updated -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-blue-500/20 text-blue-300 hover:text-blue-200 border border-blue-400/30 transition-all duration-300 hover:bg-blue-400/30">
+                                Updated 3 days ago
+                            </span>
+
+
+                        </div>
+                    </div>
+                    <div
+                        class="repo p-4 md:p-6 rounded-xl border border-gray-700 bg-gradient-to-br from-gray-900/60 to-gray-800/40 
+                             hover:from-gray-800/80 hover:to-gray-700/20 transition-all duration-300 
+                             shadow-md hover:shadow-xl hover:-translate-y-1 flex flex-col gap-4 cursor-pointer relative overflow-hidden">
+
+                        <!-- Repo Name -->
+                        <h3
+                            class="repo-name text-xl md:text-2xl font-bold text-indigo-400 hover:text-indigo-300 hover:underline relative z-10 w-fit">
+                            Profile Explorer
+                        </h3>
+
+                        <!-- Repo Info -->
+                        <div class="flex flex-wrap gap-3 mt-1 text-gray-300 relative z-10">
+
+
+                            <!-- Language -->
+                            <span class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs 
+                                bg-white/5 text-gray-300 border border-white/10
+                                transition-all duration-300 ease-in-out 
+                                hover:bg-white/10 hover:text-white hover:border-white/20">
+                                JavaScript
+                            </span>
+                            <!-- Stars -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-yellow-500/20 text-yellow-400 border border-yellow-400/30 transition-all duration-300 hover:bg-yellow-400/30">
+                                120 Stars
+                            </span>
+
+                            <!-- Forks -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-purple-500/20 text-purple-400 hover:text-purple-300 border border-purple-400/30 transition-all duration-300 hover:bg-purple-500/30">
+                                45 Forks
+                            </span>
+
+                            <!-- Last Updated -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-blue-500/20 text-blue-300 hover:text-blue-200 border border-blue-400/30 transition-all duration-300 hover:bg-blue-400/30">
+                                Updated 3 days ago
+                            </span>
+
+
+                        </div>
+                    </div>
+                    <div
+                        class="repo p-4 md:p-6 rounded-xl border border-gray-700 bg-gradient-to-br from-gray-900/60 to-gray-800/40 
+                             hover:from-gray-800/80 hover:to-gray-700/20 transition-all duration-300 
+                             shadow-md hover:shadow-xl hover:-translate-y-1 flex flex-col gap-4 cursor-pointer relative overflow-hidden">
+
+                        <!-- Repo Name -->
+                        <h3
+                            class="repo-name text-xl md:text-2xl font-bold text-indigo-400 hover:text-indigo-300 hover:underline relative z-10 w-fit">
+                            Profile Explorer
+                        </h3>
+
+                        <!-- Repo Info -->
+                        <div class="flex flex-wrap gap-3 mt-1 text-gray-300 relative z-10">
+
+
+                            <!-- Language -->
+                            <span class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs 
+                                bg-white/5 text-gray-300 border border-white/10
+                                transition-all duration-300 ease-in-out 
+                                hover:bg-white/10 hover:text-white hover:border-white/20">
+                                JavaScript
+                            </span>
+                            <!-- Stars -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-yellow-500/20 text-yellow-400 border border-yellow-400/30 transition-all duration-300 hover:bg-yellow-400/30">
+                                120 Stars
+                            </span>
+
+                            <!-- Forks -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-purple-500/20 text-purple-400 hover:text-purple-300 border border-purple-400/30 transition-all duration-300 hover:bg-purple-500/30">
+                                45 Forks
+                            </span>
+
+                            <!-- Last Updated -->
+                            <span
+                                class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-blue-500/20 text-blue-300 hover:text-blue-200 border border-blue-400/30 transition-all duration-300 hover:bg-blue-400/30">
+                                Updated 3 days ago
+                            </span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div id="pagination_box" class="p-4 flex gap-4 justify-end">
+                    <div
+                        class="pagiantion inline-block before bg-blue-800/80 hover:bg-blue-700 transition-all duration-300 rounded-full cursor-pointer p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class=""
+                            height="30">
+                            <path fill-rule="evenodd"
+                                d="M7.28 7.72a.75.75 0 0 1 0 1.06l-2.47 2.47H21a.75.75 0 0 1 0 1.5H4.81l2.47 2.47a.75.75 0 1 1-1.06 1.06l-3.75-3.75a.75.75 0 0 1 0-1.06l3.75-3.75a.75.75 0 0 1 1.06 0Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div
+                        class="pagiantion inline-block next bg-blue-800/80 hover:bg-blue-700 transition-all duration-300 rounded-full cursor-pointer p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="30">
+                            <path fill-rule="evenodd"
+                                d="M16.72 7.72a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 0 1 0 1.06l-3.75 3.75a.75.75 0 1 1-1.06-1.06l2.47-2.47H3a.75.75 0 0 1 0-1.5h16.19l-2.47-2.47a.75.75 0 0 1 0-1.06Z"
+                                clip-rule="evenodd" />
+                        </svg>
+
                     </div>
                 </div>
             </section>
