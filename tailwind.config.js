@@ -3,16 +3,17 @@ module.exports = {
   content: ["./public/**/*.{html,js}"],
   theme: {
     extend: {
+      screens: {
+        "3xl": "1920px",
+      },
       fontFamily: {
         "fira-code": '"Fira Code",monospace',
       },
       minWidth: {
         aside: "350px",
       },
-      maxHeight: {
-        main: "160vh",
-      },
       height: {
+        main: "160vh",
         searchBar: "60px",
       },
       width: {

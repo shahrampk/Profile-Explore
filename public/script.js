@@ -11,6 +11,7 @@ const beforeBtn = document.querySelector(".before");
 const afterBtn = document.querySelector(".next");
 const searchBarRepo = document.querySelector("#search-bar-repo");
 const searchIcon = document.querySelector("#search-bar-repo");
+const showReposBtn = document.querySelector("#show-repos");
 
 let currentPage = 1;
 let allrepos = [];
@@ -66,17 +67,18 @@ function paginate(array, currentPage, itemsPerPage) {
 }
 
 // Repo Card Generator
-const createRepoCards = function (reposArr) {
+const createRepoCards = function (reposArr, section = repoBox) {
   repoBox.innerHTML = ""; // clear old repos
   reposArr.forEach((repo) => {
+    if (!repo) return;
     const repoCard = `
        <div
            class="repo p-4 md:p-6 rounded-xl border border-gray-700 bg-gradient-to-br from-gray-900/60 to-gray-800/40 
                 hover:from-gray-800/80 hover:to-gray-700/20 transition-all duration-300 
                 shadow-md hover:shadow-xl hover:-translate-y-1 flex flex-col gap-4 relative overflow-hidden">
            <!-- Repo Name -->
-           <a href="${repo.html_url}" target="_blank"
-               class="repo-name text-xl md:text-2xl font-bold text-indigo-400 hover:text-indigo-300 hover:underline relative z-10 w-fit">
+           <a href="${repo.html_url ?? ""}" target="_blank"
+               class="repo-name text-xl md:text-2xl font-bold text-indigo-400 hover:text-indigo-300 hover:underline relative z-10 w-fit line-clamp-1">
                ${repo.name ?? "Not defined"}
            </a>
            <!-- Repo Info -->
@@ -97,7 +99,7 @@ const createRepoCards = function (reposArr) {
            </div>
        </div>
       `;
-    repoBox.insertAdjacentHTML("beforeend", repoCard);
+    section.insertAdjacentHTML("beforeend", repoCard);
   });
 };
 
@@ -235,6 +237,9 @@ const fetchRepo = async function () {
 // MAIN
 // ---------------------- //
 const main = async function () {
+  console.log("ok");
+  console.log(this);
+
   loader.classList.remove("hidden");
   reset();
   try {
@@ -255,14 +260,52 @@ const main = async function () {
 // ---------------------- //
 // Search repo
 // ---------------------- //
+
 const searchRepo = function () {
   const repoName = searchBarRepo.value.trim().toLowerCase();
-  console.log(repoName);
-  const repoObject = [
-    allrepos.find((repo) => repo.name.toLowerCase() === repoName),
-  ];
-  console.log(repoObject);
-  createRepoCards(repoObject);
+  console.log("Searching for:", repoName);
+
+  // If input is empty → show all repos
+  if (!repoName) {
+    const repoDate = paginate(allrepos, 1, 6);
+    createRepoCards(repoDate.pageData);
+    updateButtons(1, repoDate.totalPages);
+    return;
+  }
+
+  // Find repo by exact name (case-insensitive)
+  const repoObject = allrepos.find(
+    (repo) => repo.name.toLowerCase() === repoName
+  );
+
+  console.log("Found repo:", repoObject);
+
+  if (repoObject) {
+    // Show only matched repo
+    createRepoCards([repoObject]);
+    beforeBtn.style.display = "none";
+    afterBtn.style.display = "none";
+  } else {
+    // Show message if not found
+    repoBox.innerHTML = `
+      <div id="no-repos" class="text-center text-gray-500 italic p-4">
+        <p>🚫 No repository found.</p>
+        <button id="show-repos" class="bg-indigo-600 px-2 py-1 text-sm rounded-lg text-white mt-3 hover:bg-indigo-700 transition-all duration-200">
+          Show All Repos
+        </button>
+      </div>
+    `;
+
+    beforeBtn.style.display = "none";
+    afterBtn.style.display = "none";
+
+    // Re-attach event for "Show All Repos"
+    document.querySelector("#show-repos").addEventListener("click", () => {
+      const repoDate = paginate(allrepos, 1, 6);
+      createRepoCards(repoDate.pageData);
+      updateButtons(1, repoDate.totalPages);
+    });
+  }
 };
 
 // ---------------------- //
@@ -279,4 +322,5 @@ beforeBtn.addEventListener("click", () => {
   currentPage--;
   renderRepos();
 });
-searchIcon.addEventListener("click", searchRepo);
+// Use "input" so search updates instantly
+searchBarRepo.addEventListener("input", searchRepo);
