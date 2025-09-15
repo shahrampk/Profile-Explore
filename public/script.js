@@ -1,5 +1,3 @@
-console.log("Hello World");
-
 const searchBar = document.querySelector("#search-bar");
 const searchBtn = document.querySelector("#search-btn");
 const mainApp = document.querySelector("main");
@@ -237,9 +235,6 @@ const fetchRepo = async function () {
 // MAIN
 // ---------------------- //
 const main = async function () {
-  console.log("ok");
-  console.log(this);
-
   loader.classList.remove("hidden");
   reset();
   try {
@@ -263,8 +258,6 @@ const main = async function () {
 
 const searchRepo = function () {
   const repoName = searchBarRepo.value.trim().toLowerCase();
-  console.log("Searching for:", repoName);
-
   // If input is empty → show all repos
   if (!repoName) {
     const repoDate = paginate(allrepos, 1, 6);
@@ -277,8 +270,6 @@ const searchRepo = function () {
   const repoObject = allrepos.find(
     (repo) => repo.name.toLowerCase() === repoName
   );
-
-  console.log("Found repo:", repoObject);
 
   if (repoObject) {
     // Show only matched repo
