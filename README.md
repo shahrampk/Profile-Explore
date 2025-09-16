@@ -21,6 +21,11 @@ Built with **Async JavaScript + GitHub REST API** ⚡
 
 ---
 
+## Usage 
+- **You can search 60 username per hour**
+
+---
+
 ## 🛠️ Tech Stack  
 
 - ⚡ **JavaScript (ES6+)**  
