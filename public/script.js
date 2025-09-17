@@ -13,7 +13,7 @@ const showReposBtn = document.querySelector("#show-repos");
 
 let currentPage = 1;
 let allrepos = [];
-const itemsPerPage = 6;
+const itemsPerPage = 5;
 
 loader.classList.add("hidden");
 
@@ -152,55 +152,62 @@ const fetchInfo = async function () {
 
   // Profile Section
   const profileinfo = `
-      <div>
-        <div class="flex flex-col sm:grid sm:grid-cols-6 gap-6 sm:items-center p-3 rounded-2xl">
-            <!-- Avatar -->
-            <div class="flex sm:col-span-2 justify-start">
-                <img src="${data.avatar_url}" alt="Avatar Image"
-                    class="rounded-xl object-cover w-full md:min-w-28 shadow-md">
-            </div>
-            <!-- profile Info -->
-            <div class="sm:col-span-4 flex flex-col gap-3 text-lg">
-                <div>
-                    <h3 class="font-semibold text-gray-400">Name</h3>
-                    <p id="name" class="text-xl font-medium">${
-                      data.name ?? "Not defined"
-                    }</p>
+                <div class="flex flex-col sx:grid sx:grid-cols-5 gap-6 sx:items-center xl:p-3 rounded-2xl">
+                    <!-- Avatar -->
+                    <div class="flex sx:col-span-2 justify-start">
+                        <img src="${data.avatar_url}" alt="Avatar Image"
+                            class="rounded-xl object-cover w-full md:min-w-28 shadow-md">
+                    </div>
+                    <!-- Profile Info -->
+                    <div class="sx:col-span-3 flex flex-col gap-6">
+                        <div class="flex flex-col gap-1">
+                            <h3 class="font-semibold text-xl text-gray-400">Name</h3>
+                            <p id="name" class="text-xl font-medium">${
+                              data.name ?? "Not defined"
+                            }</p>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <h3 class="font-semibold text-xl text-gray-400">Username</h3>
+                            <a href="${
+                              data.html_url
+                            }" type="_blank" id="username"
+                                class="text-indigo-400 text-xl font-medium hover:underline inline-block">${
+                                  data.login
+                                }</a>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-gray-400">Username</h3>
-                    <a href="${data.html_url}" target="_blank" id="username" 
-                       class="text-indigo-400 font-medium hover:underline">
-                       ${data.login}
-                    </a>
+                <div class="p-4 flex flex-col gap-6  opacity-90">
+                    <div class="flex flex-col gap-2">
+                        <h3 class="font-semibold text-gray-400">
+                            Bio:
+                        </h3>
+                        <p id="bio">${data.bio ?? "Not defined"}</p>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <h3 class="font-semibold text-gray-400">
+                            location:
+                        </h3>
+                        <p id="location">${data.location ?? "Not defined"}</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-4 sm:gap-7">
+                        <div class="flex gap-3">
+                            <h3 class="font-semibold text-gray-400">Followers:</h3>
+                            <p id="followers">${data.followers}</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <h3 class="font-semibold text-gray-400">Following:</h3>
+                            <p id="following">${data.following}</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <h3 class="font-semibold text-gray-400">Company:</h3>
+                        <p id="company">${data.company ?? "Not defined"}</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="p-4 flex flex-col gap-6">
-            <div class="flex flex-col gap-2">
-                <h3 class="font-semibold text-gray-400">Bio:</h3>
-                <p id="bio">${data.bio ?? "Not defined"}</p>
-            </div>
-            <div class="flex flex-col gap-2">
-                <h3 class="font-semibold text-gray-400">Location:</h3>
-                <p id="location">${data.location ?? "Not defined"}</p>
-            </div>
-            <div class="flex flex-col md:flex-row gap-4 sm:gap-7">
-                <div class="flex gap-3">
-                    <h3 class="font-semibold text-gray-400">Followers:</h3>
-                    <p id="followers">${data.followers}</p>
-                </div>
-                <div class="flex gap-3">
-                    <h3 class="font-semibold text-gray-400">Following:</h3>
-                    <p id="following">${data.following}</p>
-                </div>
-            </div>
-            <div class="flex flex-col gap-1">
-                <h3 class="font-semibold text-gray-400">Company:</h3>
-                <p id="company">${data.company ?? "Not defined"}</p>
-            </div>
-        </div>
-      </div>
+
+
+
     `;
   profileSec.innerHTML = profileinfo;
 };
@@ -260,7 +267,7 @@ const searchRepo = function () {
   const repoName = searchBarRepo.value.trim().toLowerCase();
   // If input is empty → show all repos
   if (!repoName) {
-    const repoDate = paginate(allrepos, 1, 6);
+    const repoDate = paginate(allrepos, 1, 5);
     createRepoCards(repoDate.pageData);
     updateButtons(1, repoDate.totalPages);
     return;
@@ -292,7 +299,7 @@ const searchRepo = function () {
 
     // Re-attach event for "Show All Repos"
     document.querySelector("#show-repos").addEventListener("click", () => {
-      const repoDate = paginate(allrepos, 1, 6);
+      const repoDate = paginate(allrepos, 1, 5);
       createRepoCards(repoDate.pageData);
       updateButtons(1, repoDate.totalPages);
     });
