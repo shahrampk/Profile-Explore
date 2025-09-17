@@ -8,7 +8,7 @@ module.exports = {
         sx: "400px",
       },
       fontFamily: {
-        Lato: '"Lato", sans-serif',
+        Lato: '"Roboto", sans-serif',
       },
       minWidth: {
         aside: "350px",
@@ -32,5 +32,17 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".scrollbar-hide": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+        },
+        ".scrollbar-hide::-webkit-scrollbar": {
+          display: "none",
+        },
+      });
+    },
+  ],
 };

@@ -70,32 +70,35 @@ const createRepoCards = function (reposArr, section = repoBox) {
   reposArr.forEach((repo) => {
     if (!repo) return;
     const repoCard = `
-       <div
-           class="repo p-4 md:p-6 rounded-xl border border-gray-700 bg-gradient-to-br from-gray-900/60 to-gray-800/40 
-                hover:from-gray-800/80 hover:to-gray-700/20 transition-all duration-300 
-                shadow-md hover:shadow-xl hover:-translate-y-1 flex flex-col gap-4 relative overflow-hidden">
+        <div
+           class="repo p-4 md:p-6 rounded-xl border border-blue-900 bg-gradient-to-br from-gray-900/60 to-gray-800/40 
+                   transition-all duration-300 
+                   shadow-md hover:shadow-lg hover:-translate-y-1 flex flex-col gap-4 relative overflow-hidden">
            <!-- Repo Name -->
            <a href="${repo.html_url ?? ""}" target="_blank"
-               class="repo-name text-xl md:text-2xl font-bold text-indigo-400 hover:text-indigo-300 hover:underline relative z-10 w-fit line-clamp-1">
+               class="repo-name text-xl md:text-2xl font-bold text-indigo-400 hover:text-indigo-300 hover:underline relative z-10 w-fit">
                ${repo.name ?? "Not defined"}
            </a>
            <!-- Repo Info -->
            <div class="flex flex-wrap gap-3 mt-1 text-gray-300 relative z-10">
                <span class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs 
-                   bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10">
-                   ${repo.language ?? "N/A"}
-               </span>
-               <span class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-yellow-500/20 text-yellow-400 border border-yellow-400/30">
+                      bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10">
+                    ${repo.language ?? "N/A"} </span>
+               <span
+                   class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-yellow-500/20 text-yellow-400 border border-yellow-400/30">
                    ⭐ ${repo.stargazers_count ?? "Not defined"}
                </span>
-               <span class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-purple-500/20 text-purple-400 border border-purple-400/30">
-                   🍴 ${repo.forks}
+               <span
+                   class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-purple-500/20 text-purple-400 border border-purple-400/30">
+                   🍴  ${repo.forks}
                </span>
-               <span class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-blue-500/20 text-blue-300 border border-blue-400/30">
+               <span
+                   class="flex items-center gap-2 px-2.5 py-1 rounded-full text-xs bg-blue-500/20 text-blue-300 border border-blue-400/30">
                    ⏳ ${timeAgo(repo.pushed_at) ?? "Not defined"}
                </span>
            </div>
-       </div>
+        </div>
+
       `;
     section.insertAdjacentHTML("beforeend", repoCard);
   });
