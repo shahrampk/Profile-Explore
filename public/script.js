@@ -155,7 +155,7 @@ const fetchInfo = async function () {
 
   // Profile Section
   const profileinfo = `
-                <div class="flex flex-col sx:grid sx:grid-cols-5 gap-6 sx:items-center xl:p-3 rounded-2xl">
+                <div class="flex flex-col sx:grid sx:grid-cols-5 gap-6 sx:items-center p-2 xl:p-3 rounded-2xl">
                     <!-- Avatar -->
                     <div class="flex sx:col-span-2 justify-start">
                         <img src="${data.avatar_url}" alt="Avatar Image"
@@ -174,7 +174,7 @@ const fetchInfo = async function () {
                             <a href="${
                               data.html_url
                             }" type="_blank" id="username"
-                                class="text-indigo-400 text-xl font-medium hover:underline inline-block">${
+                                class="text-indigo-400 text-xl font-medium hover:underline inline-block w-fit">${
                                   data.login
                                 }</a>
                         </div>
